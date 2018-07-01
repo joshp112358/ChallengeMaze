@@ -16,11 +16,14 @@ var walled = [[t,f,f,t],[t,f,t,f],[t,f,t,f],[t,t,f,f],[t,f,f,t],[t,t,f,f],
              [f,f,f,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[t,t,f,f],[f,t,f,t],
              [f,f,f,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[f,f,f,f],[f,t,f,f],
              [f,f,t,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[f,f,t,f],[f,t,t,f]];
-
+var score = 0;
 function setup(){
   createCanvas(360,360);
   cols = floor(width/w);
   rows = floor(height/w);
+
+  scoreElem = createDiv();
+  scoreElem.id = 'score';
 
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < cols; i++) {
@@ -45,6 +48,7 @@ function draw(){
   }
 
   current.visited = true;
+  scoreElem.html('Score = ' + score);
 }
 function index(i,j){
   return i+j*cols;
@@ -85,7 +89,6 @@ function Cell(i, j) {
 
 function keyPressed(){
   if (key === 'C'){
-    print(15)
     for (var i=0; i<grid.length; i++){
       grid[i].visited = false
       current = grid[0];
@@ -96,20 +99,32 @@ function keyPressed(){
     if (current.i === cols-1){}
     else if(grid[index(current.i+1, current.j)].visited){}
     else {current = grid[index(current.i+1, current.j)]}
+    if (typeof current.element=== 'number'){
+      score += current.element;
+    }
   }
   else if (keyCode === LEFT_ARROW){
     if (current.i === 0){}
     else if(grid[index(current.i-1, current.j)].visited){}
     else {current = grid[index(current.i-1, current.j)]}
+    if (typeof current.element=== 'number'){
+      score += current.element;
+    }
   }
   else if (keyCode === UP_ARROW){
     if (current.j ===0){}
     else if(grid[index(current.i, current.j-1)].visited){}
     else {current = grid[index(current.i, current.j-1)]}
+    if (typeof current.element=== 'number'){
+      score += current.element;
+    }
   }
   else if (keyCode === DOWN_ARROW){
     if (current.j === rows-1){}
     else if(grid[index(current.i, current.j+1)].visited){}
     else (current = grid[index(current.i, current.j+1)])
+    if (typeof current.element === 'number'){
+      score += current.element;
+    }
   }
 }
