@@ -7,7 +7,15 @@ var digits = ['Start',5,5,5,5,5,
               6,4,4,4,4,4,
               6,7,7,7,7,4,
               6,8,8,8,8,4,
-              6,6,6,6,6,'End']
+              6,6,6,6,6,'End'];
+let t = true
+let f = false
+var walled = [[t,f,f,t],[t,f,t,f],[t,f,t,f],[t,t,f,f],[t,f,f,t],[t,t,f,f],
+             [f,f,f,t],[t,f,f,f],[t,t,f,f],[f,f,t,t],[f,t,t,f],[f,t,f,t],
+             [f,t,f,t],[f,f,t,t],[f,f,t,f],[t,f,t,f],[t,f,t,f],[f,t,f,f],
+             [f,f,f,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[t,t,f,f],[f,t,f,t],
+             [f,f,f,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[f,f,f,f],[f,t,f,f],
+             [f,f,t,t],[t,f,t,f],[t,f,t,f],[t,f,t,f],[f,f,t,f],[f,t,t,f]];
 
 function setup(){
   createCanvas(360,360);
@@ -23,6 +31,10 @@ function setup(){
   for (var i = 0; i<grid.length; i++){
     grid[i].element = digits[i];
   }
+  for (var i = 0; i<grid.length; i++){
+    grid[i].walls = walled[i];
+  }
+
   current = grid[0]
 }
 
@@ -62,10 +74,12 @@ function Cell(i, j) {
       line(x,y+w,x,y);
     }
     if (this.visited){
-      fill(255,0,255,100);
-      rect(x,y,w,w);
+      fill(255,0,255,50);
+      noStroke();
+      rect(x,y,w-4,w-4);
     }
-    text(this.element, x+w/2,y+w/2)
+    fill('white');
+    text(this.element, x+w/2,y+w/2);
   }
 }
 
