@@ -94,6 +94,7 @@ function keyPressed(){
       current = grid[0];
       current.visited = true;
     }
+    score = 0
   }
   else if (keyCode === RIGHT_ARROW){
     if(!current.walls[1]){
