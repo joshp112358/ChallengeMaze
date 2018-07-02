@@ -96,35 +96,43 @@ function keyPressed(){
     }
   }
   else if (keyCode === RIGHT_ARROW){
-    if (current.i === cols-1){}
-    else if(grid[index(current.i+1, current.j)].visited){}
-    else {current = grid[index(current.i+1, current.j)]}
-    if (typeof current.element=== 'number'){
-      score += current.element;
+    if(!current.walls[1]){
+      if (current.i === cols-1){}
+      else if(grid[index(current.i+1, current.j)].visited){}
+      else {current = grid[index(current.i+1, current.j)]}
+      if (typeof current.element=== 'number'){
+        score += current.element;
+      }
     }
   }
   else if (keyCode === LEFT_ARROW){
-    if (current.i === 0){}
-    else if(grid[index(current.i-1, current.j)].visited){}
-    else {current = grid[index(current.i-1, current.j)]}
-    if (typeof current.element=== 'number'){
-      score += current.element;
+    if(!current.walls[3]){
+      if (current.i === 0){}
+      else if(grid[index(current.i-1, current.j)].visited){}
+      else {current = grid[index(current.i-1, current.j)]}
+      if (typeof current.element=== 'number'){
+        score += current.element;
+      }
     }
   }
   else if (keyCode === UP_ARROW){
-    if (current.j ===0){}
-    else if(grid[index(current.i, current.j-1)].visited){}
-    else {current = grid[index(current.i, current.j-1)]}
-    if (typeof current.element=== 'number'){
-      score += current.element;
+    if(!current.walls[0]){
+      if (current.j ===0){}
+      else if(grid[index(current.i, current.j-1)].visited){}
+      else {current = grid[index(current.i, current.j-1)]}
+      if (typeof current.element=== 'number'){
+        score += current.element;
+      }
     }
   }
   else if (keyCode === DOWN_ARROW){
-    if (current.j === rows-1){}
-    else if(grid[index(current.i, current.j+1)].visited){}
-    else (current = grid[index(current.i, current.j+1)])
-    if (typeof current.element === 'number'){
-      score += current.element;
+    if (!current.walls[2]){
+      if (current.j === rows-1){}
+      else if(grid[index(current.i, current.j+1)].visited){}
+      else (current = grid[index(current.i, current.j+1)])
+      if (typeof current.element === 'number'){
+        score += current.element;
+      }
     }
   }
 }
