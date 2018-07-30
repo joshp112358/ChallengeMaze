@@ -11,6 +11,9 @@
 	<script src="libraries/p5.dom.js"></script>
 	<script src="libraries/p5.sound.js"></script>
 	<script src="sketch.js"></script>
+	<script src="chooseLevel.js"></script>
+	<script src="init.js"></script>
+
 
 	<style>
 		body {
@@ -21,8 +24,19 @@
 		canvas {
 			margin:auto;
 		}
+
+		#levelScreen {
+			display: block;
+		}
+
+		#mazeScreen {
+			display: none;
+		}
 	</style>
 </head>
 <body>
+
+	<div id = "levelScreen"></div>
+	<div id = "mazeScreen"></div>
 </body>
 </html>
